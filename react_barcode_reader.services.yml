@@ -1,0 +1,4 @@
+services:
+  react_barcode_reader.TextfieldWebcam:
+    class: Drupal\react_barcode_reader\TextfieldWebcam
+    arguments: ['@plugin.manager.block']

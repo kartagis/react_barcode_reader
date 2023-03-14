@@ -11,21 +11,3 @@ function react_barcode_reader_form_alter(&$form, \Drupal\Core\Form\FormStateInte
     }
   }
 }
-function render_react_barcode_reader_block() {
-  $block_manager = \Drupal::service('plugin.manager.block');
-// You can hard code configuration or you load from settings.
-  $config = [];
-  $plugin_block = $block_manager->createInstance('react_module_block', $config);
-// Some blocks might implement access check.
-  $access_result = $plugin_block->access(\Drupal::currentUser());
-// Return empty render array if user doesn't have access.
-// $access_result can be boolean or an AccessResult class
-  if (is_object($access_result) && $access_result->isForbidden() || is_bool($access_result) && !$access_result) {
-    // You might need to add some cache tags/contexts.
-    return [];
-  }
-  $render = $plugin_block->build();
-// Add the cache tags/contexts.
-  \Drupal::service('renderer')->addCacheableDependency($render, $plugin_block);
-  return $render;
-}
