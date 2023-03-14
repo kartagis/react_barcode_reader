@@ -1,0 +1,7 @@
+name: React Barcode Reader
+description: Barcode Reader module made with React App and Quagga and integrated with Drupal.
+type: module
+package: Custom
+core_version_requirement: ^9.4 || ^10
+libraries:
+  - react_barcode_reader/react_module_block
