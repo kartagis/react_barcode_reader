@@ -1,7 +1,9 @@
 <?php
 
+use Drupal\Core\Block\BlockManager;
+
 class TextfieldWebcam {
-  public function __construct(\Drupal\Core\Block\BlockManagerInterface $blockManager) {
+  public function __construct(BlockManager $blockManager) {
     $this->blockManager = $blockManager;
   }
   public function renderBlock() {

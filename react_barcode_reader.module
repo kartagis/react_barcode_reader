@@ -1,5 +1,8 @@
 <?php
 
+use \Drupal\react_barcode_reader\TextfieldWebcam;
+
+
 /*
  * Implements hook_form_alter().
  */
@@ -7,7 +10,7 @@ function react_barcode_reader_form_alter(&$form, \Drupal\Core\Form\FormStateInte
   $fields = \Drupal\field\Entity\FieldConfig::loadMultiple();
   foreach ($fields as $field) {
     if ($field->getType() == 'string') {
-      $form[$field->getName()]['#prefix'] = \Drupal\Core\Render\Markup::create($render);
+      $form[$field->getName()]['#prefix'] = TextfieldWebcam\renderBlock();
     }
   }
 }
