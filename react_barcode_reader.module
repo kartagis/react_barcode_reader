@@ -8,10 +8,11 @@ use Drupal\react_barcode_reader\TextfieldWebcam;
  */
 function react_barcode_reader_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
   $fields = \Drupal\field\Entity\FieldConfig::loadMultiple();
-  $textField = new TextfieldWebcam(\Drupal\Core\Block\BlockManager $blockManager);
+  $textField = new TextfieldWebcam();
+  $block_build = $textField->renderBlock();
   foreach ($fields as $field) {
     if ($field->getType() == 'string') {
-      $form[$field->getName()]['#prefix'] = $textField->renderBlock();
+      $form[$field->getName()]['#suffix'] = Drupal::service('renderer')->render($block_build);
     }
   }
 }
