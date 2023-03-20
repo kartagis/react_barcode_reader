@@ -1,12 +1,14 @@
 <?php
 
+namespace Drupal\react_barcode_reader;
+
 use Drupal\Core\Block\BlockManager;
 
 class TextfieldWebcam {
   public function __construct(BlockManager $blockManager) {
     $this->blockManager = $blockManager;
   }
-  public function renderBlock() {
+  public function renderBlock($render) {
     $blockManager = \Drupal::service('plugin.manager.block');
     $config = [];
     $pluginBlock = $blockManager->createInstance('react_module_block', $config);
